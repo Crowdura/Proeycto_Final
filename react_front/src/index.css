@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+body {
+  overflow-y: hidden;
+}
+
+.divContain {
+  @apply h-[200vh] scrollbar scrollbar-thumb-slate-900;
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+  height: 91%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: auto;
+  background-color: rgba(21, 32, 60, 0.407);
+}
+.divContain .divContainI {
+  @apply rounded;
+  position: relative;
+  width: 70%;
+  margin: auto;
+  padding: 2%;
+  background-color: rgb(8, 6, 47);
+}
+.divContain .divContainI .inputForm {
+  @apply appearance-none block w-full bg-blue-900 text-gray-700 border border-blue-900 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white;
+  position: relative;
+  margin: auto;
+}
+
+.ButtonB {
+  @apply bg-slate-950 hover:bg-blue-950 text-white font-bold py-2 px-4 rounded;
+  padding: "10px";
+  margin: "1%";
+}
+
+.ButtonMainUserI {
+  @apply hidden sm:ml-6 sm:block bg-slate-800 hover:bg-blue-950 text-white font-bold hover:border-slate-600 py-2 px-4 rounded;
+  margin: 1rem;
+}
+
+.ButtonMainUserO {
+  @apply hidden sm:ml-6 sm:block bg-slate-800 hover:bg-blue-950 text-white font-bold hover:border-slate-600 py-2 px-4 rounded;
+  margin: 1rem;
+}
+
+.ButtonMainMovUserI {
+  @apply block bg-blue-600 hover:bg-blue-950 px-3 py-2 text-base font-medium text-white;
+  width: 100%;
+}
+
+.ButtonMainMovUserO {
+  @apply block bg-blue-600 hover:bg-blue-950 px-3 py-2 text-base font-medium text-white;
+  width: 100%;
+}
+
+.tableB {
+  @apply shadow-2xl font-[Poppins] border-2 border-blue-600 w-11/12 overflow-hidden;
+  position: relative;
+  margin: auto;
+  top: 2%;
+}
+.tableB .theadB {
+  @apply text-white;
+}
+.tableB .theadB .trh .th {
+  @apply py-3 bg-slate-900;
+}
+.tableB .tbodyB {
+  @apply text-slate-300 text-center;
+}
+.tableB .tbodyB .trb {
+  @apply bg-slate-800  hover:bg-slate-700 hover:scale-105 cursor-pointer duration-300;
+}
+.tableB .tbodyB .trb .tdb {
+  @apply py-3 px-6;
+}
+
+.divCont {
+  margin: auto;
+}
+
+/*# sourceMappingURL=index.css.map */
