@@ -92,6 +92,9 @@ const CreateProyect = () => {
                                         value={userAsing}
                                         onChange={(e) => {setUserAsing(e)}}
                                         options={userData}
+                                        classNames={{
+                                            container: 'w-full z-10'
+                                        }}
                                     />
                                 </div>
                             </div>
