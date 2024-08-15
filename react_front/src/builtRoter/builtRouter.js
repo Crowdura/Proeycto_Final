@@ -129,10 +129,8 @@ export const BuiltRouter = (stUser) => {
                                 <Main/>
                                 <BrowserRouter forceRefresh={true}>
                                 <Routes>
-                                    <Route path='/' element={ <VistaPrin/> }></Route>
-                                    <Route path='/Contac' element={ <ContactVista/> }></Route>
                                     <Route path='/user/create' element={ <CreacteUser/> }></Route>
-                                    <Route path='/user/ingre' element={ <IngreUser/> }></Route>
+                                    <Route path='/' element={ <IngreUser/> }></Route>
                                     <Route></Route>
                                 </Routes>
                                 </BrowserRouter>

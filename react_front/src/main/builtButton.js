@@ -90,20 +90,13 @@ export const BuiltButton = (ValUser, ValUserCarg) => {
                             </>
             break;
         case 'D':
-            valBuiltMain  = <>
-                                <ButtonMainP href="/">Inicio</ButtonMainP>
-                                <ButtonMain  href="/Contac">contactos</ButtonMain>
-
-                            </>
 
             valBuiltMainL = <>
-                                <ButtonMainUserI href="/user/ingre">Ingreso</ButtonMainUserI>
+                                <ButtonMainUserI href="/">Ingreso</ButtonMainUserI>
                                 <ButtonMainUserO href="/user/create">Registro</ButtonMainUserO>
                             </>
             valBuiltMainM = <>
-                                <ButtonMainMovilP href="/">Inicio</ButtonMainMovilP>
-                                <ButtonMainMovil href="/Contac">contactos</ButtonMainMovil>
-                                <ButtonMainMovUserI href="/user/ingre">Ingreso</ButtonMainMovUserI>
+                                <ButtonMainMovUserI href="/">Ingreso</ButtonMainMovUserI>
                                 <ButtonMainMovUserI href="/user/create">Registro</ButtonMainMovUserI>
                             </>
             break;

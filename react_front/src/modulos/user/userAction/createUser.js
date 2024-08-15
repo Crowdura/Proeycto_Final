@@ -30,7 +30,7 @@ const CreacteUser = () => {
             andress: andress,
             cargo: '9Jj0x4BL0BkzYyQZLQS7'
         })
-        navigate('/user/ingre')
+        navigate('/')
     }
     const creatUserGoogle = async (e) => {
         e.preventDefault()
