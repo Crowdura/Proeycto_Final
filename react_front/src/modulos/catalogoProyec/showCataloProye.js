@@ -24,6 +24,8 @@ const ShowCataloPro = () => {
     }
 
     const ConsultProyecAd = async (userId,staUser) => {
+        console.log(userId)
+        console.log(staUser)
         try{
             const params = {
                 key1:userId, 
@@ -31,6 +33,7 @@ const ShowCataloPro = () => {
             }
             const res = await axios.get(URI,{ params })
             setDataCatPro(res.data)
+            console.log(dataCatPro)
         }catch(e){
             console.error(e)
         }

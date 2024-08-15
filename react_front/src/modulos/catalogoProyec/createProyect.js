@@ -1,8 +1,10 @@
 import React,{useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
+import Select from "react-tailwindcss-select"
 import axios from "axios";
 
 const URI = "http://localhost:8000/proyecto/"
+const URIS = "http://localhost:8000/usuarios/data/"
 
 const CreateProyect = () => {
     const [nameProyect, setNameProyect] = useState('')
@@ -11,17 +13,19 @@ const CreateProyect = () => {
     const [userAsing, setUserAsing] = useState('')
     const [fechaIni, setFechaIni] = useState('')
     const [fechaLast, setFechLast] = useState('')
+    const [userData, setDataUser] = useState([])
 
     const navigate = useNavigate()
 
     const CreateProyec = async (e) => {
         e.preventDefault()
         try{
+            console.log(userAsing.value)
             const res = await axios.post(URI,{
                 NameProyec: nameProyect,
                 DescriProyect: descripProyect,
                 status: statusProyect,
-                userAsing: userAsing,
+                userAsing: userAsing.value,
                 FechaIni: fechaIni,
                 FechaLast: fechaLast
             })
@@ -31,10 +35,25 @@ const CreateProyect = () => {
         navigate('/')
     }
 
+    const getUsers = async () => {
+        try{
+            const res = await axios.get(URIS)
+            if(res.status == 200){
+                console.log(res.data)
+                const options2 = res.data.map((user) => {
+                    return { value: user.id, label: `${user.Name} ${user.lastName}` }
+                })
+                setDataUser(options2)
+            }
+        }catch(e){
+            console.error(e)
+        }
+    }
 
     useEffect(() => {
-
+        getUsers()
     },[])
+
     return(<>
         <div className="divContain" style={{ height: "100%" }}>
             <div className="container h-full p-5" style={{ margin: "auto"}}>
@@ -69,7 +88,11 @@ const CreateProyect = () => {
                                 </div>
                                 <div>
                                     <label className="text-gray-700 dark:text-gray-200" htmlFor="userAsing">Usuarios asignados</label>
-                                    <input onChange={(e) => {setUserAsing(e.target.value)}} id="userAsing" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" required/>
+                                    <Select
+                                        value={userAsing}
+                                        onChange={(e) => {setUserAsing(e)}}
+                                        options={userData}
+                                    />
                                 </div>
                             </div>
                             <div className="flex justify-end mt-6">
