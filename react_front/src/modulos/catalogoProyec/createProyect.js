@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-tailwindcss-select"
 import axios from "axios";
 
-const URI = `${ import.meta.env.REACT_APP_API_URL }/proyecto/`
-const URIS = `${ import.meta.env.REACT_APP_API_URL }/usuarios/data/`
+const URI = `${ process.env.REACT_APP_API_URL }/proyecto/`
+const URIS = `${ process.env.REACT_APP_API_URL }/usuarios/data/`
 
 const CreateProyect = () => {
     const [nameProyect, setNameProyect] = useState('')

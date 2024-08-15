@@ -3,7 +3,7 @@ import getValInicUser from "../../valInUser/valIniUser.js";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
-const URI = `${ import.meta.env.REACT_APP_API_URL }/IngreUser`
+const URI = `${ process.env.REACT_APP_API_URL }/userAction/IngreUser`
 
 const IngreUser = () => {
     const [password, setPassword] = useState('')

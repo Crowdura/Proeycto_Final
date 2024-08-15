@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-const URI = `${ import.meta.env.REACT_APP_API_URL }/usuarios/`
+const URI = `${ process.env.REACT_APP_API_URL }/usuarios/`
 
 const UpdateUser = () => {
     const [Name, setName] = useState(' ')

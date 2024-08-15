@@ -7,9 +7,7 @@ import { routerCarg, routerProyect, routerSolicClient, routerUser, routerUserAct
 
 const app = express()
 
-app.use(cors({
-    origin: FRONTEND_URL
-}))
+app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 

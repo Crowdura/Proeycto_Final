@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const URI  = `${ import.meta.env.REACT_APP_API_URL }/usuarios/`
+const URI  = `${ process.env.REACT_APP_API_URL }/usuarios/`
 
-const URIG = `${ import.meta.env.REACT_APP_API_URL }/usuarios/GoogleAuth`
+const URIG = `${ process.env.REACT_APP_API_URL }/usuarios/GoogleAuth`
 
 const CreacteUser = () => {
     const [Name, setName] = useState(' ')

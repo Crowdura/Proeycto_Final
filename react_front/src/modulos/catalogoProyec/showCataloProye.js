@@ -2,8 +2,8 @@ import React,{useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const URI = `${ import.meta.env.REACT_APP_API_URL }/proyecto/`
-const URIS = `${ import.meta.env.REACT_APP_API_URL }/valUser`
+const URI = `${ process.env.REACT_APP_API_URL }/proyecto/`
+const URIS = `${ process.env.REACT_APP_API_URL }/valUser`
 
 const ShowCataloPro = () => {
     const[dataCatPro, setDataCatPro] = useState([])

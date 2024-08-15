@@ -4,7 +4,7 @@ import axios from 'axios';
 import React,{ useEffect, useState,useInsertionEffect} from 'react';
 import { BuiltRouter } from './builtRoter/builtRouter';
 
-const URI = `${ import.meta.env.REACT_APP_API_URL }/valUser`;
+const URI = `${ process.env.REACT_APP_API_URL }/valUser`;
 
 function App() {
   const [valInic, setValInic]  = useState('') 
