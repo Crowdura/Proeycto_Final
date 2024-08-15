@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Select from "react-tailwindcss-select"
 import axios from "axios";
 
-const URI = "http://localhost:8000/proyecto/"
-const URIS = "http://localhost:8000/usuarios/data/"
+const URI = `${ import.meta.env.REACT_APP_API_URL }/proyecto/`
+const URIS = `${ import.meta.env.REACT_APP_API_URL }/usuarios/data/`
 
 const CreateProyect = () => {
     const [nameProyect, setNameProyect] = useState('')
@@ -93,7 +93,11 @@ const CreateProyect = () => {
                                         onChange={(e) => {setUserAsing(e)}}
                                         options={userData}
                                         classNames={{
-                                            container: 'w-full z-10'
+                                            container: 'w-full z-10',
+                                            control: 'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            menu:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            option:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            singleValue:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring'
                                         }}
                                     />
                                 </div>

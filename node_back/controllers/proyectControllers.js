@@ -4,6 +4,7 @@ import { doc, getDoc, getDocs, updateDoc, deleteDoc, setDoc, query, where } from
 export const getAllProyect = async ( req, res ) => {
     let proyects = []
     const {key1, key2} = req.query
+    console.log(key1 + key2)
     try{
         if(key2 == "A"){
             const proyectData = await getDocs(proyectModel)
@@ -11,6 +12,7 @@ export const getAllProyect = async ( req, res ) => {
                 proyects.push({ ...data.data(), id:data.id })
             })
         }else{
+            console.log('Entro en este luegar')
             const q = query(proyectModel, where("userAsing","==",key1))
             const proyectData2 = await getDocs(q)
             proyectData2 .forEach( (data) => {
@@ -40,7 +42,8 @@ export const getProyect = async (req, res) => {
 
 export const createProyect = async (req, res) => {
     try{
-        const proyectRef = doc( proyectModel)
+        
+        const proyectRef = doc( proyectModel )
         await setDoc(proyectRef, req.body)
         res.json({
             message: 'Se creo satisfatoriamente el proyecto'

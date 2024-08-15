@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const URI = "http://localhost:8000/proyecto/"
+const URI = `${ import.meta.env.REACT_APP_API_URL }/proyecto/`
 
 const ShowProyect = () => {
     const [nameProyect, setNameProyect] = useState('')

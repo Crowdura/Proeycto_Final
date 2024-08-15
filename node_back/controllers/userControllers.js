@@ -46,6 +46,21 @@ export const getAlluser = async (res,key2,cargValManis) => {
     }
 }
 
+export const getUserData = async (req,res) => {
+    const dataUser = []
+    try{
+        const resC = await getDocs(UserModel)
+        resC.forEach((doc) => {
+            dataUser.push({...doc.data(), id:doc.id})
+        })
+        res.json(dataUser)
+    }catch(e){ 
+        res.json({
+            message: e.message
+        })
+    }
+}
+
 export const getUser = async (req, res) => {
     try {
         const refDoc = doc( UserModel, req.params.id )

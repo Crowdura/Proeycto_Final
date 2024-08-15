@@ -1,9 +1,7 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
 import { BuiltButton } from "./builtButton.js";
-import { useNavigate } from "react-router-dom";
-
-const URI = 'http://localhost:8000/valUser';
+const URI = `${ import.meta.env.REACT_APP_API_URL }/valUser`;
 
 const Main = () => {
     const [valPrin, setVal] = useState('')

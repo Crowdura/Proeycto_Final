@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAlluserCarg, getUser, updateUser, deleteUser, creatUser} from '../controllers/userControllers.js'
+import { getAlluserCarg, getUserData, getUser, updateUser, deleteUser, creatUser} from '../controllers/userControllers.js'
 import { getAllcargo, getCarg, creatCarg, deleteCarg, updCarg  } from '../controllers/valCargControllers.js'
 import { createSolicClient, deleteSolicClient, getAllsolicClient, getSolicClient, updateSolicClient } from '../controllers/solicClien.js'
 import { createProyect, deleteProyect, getAllProyect, getProyect, updateProyect } from '../controllers/proyectControllers.js'
@@ -36,6 +36,7 @@ routerCarg.delete('/:id', deleteCarg)
 
 //configuración de router de Usuario
 routerUser.get('/', getAlluserCarg)
+routerUser.get('/data', getUserData)
 routerUser.get('/:id', getUser)
 routerUser.post('/', creatUser)
 routerUser.delete('/:id', deleteUser)

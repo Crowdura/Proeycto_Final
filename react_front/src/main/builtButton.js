@@ -5,7 +5,7 @@ import { ButtonMainMovilP, ButtonMainMovil } from "../component/ui/Main/buttonMa
 import axios from "axios"
 import { ButtonMainMovUserI, ButtonMainMovUserO, ButtonMainUserI, ButtonMainUserO } from "../component/ui/Main/buttonMainUserI"
 
-const URI = "http://localhost:8000/userAction/longOut";
+const URI = `${ import.meta.env.REACT_APP_API_URL }/userAction/longOut`;
 
 export const BuiltButton = (ValUser, ValUserCarg) => {
     let valBuiltMain
