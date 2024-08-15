@@ -1,10 +1,10 @@
 import express from 'express'
-import { getAlluser, getUser, updateUser, deleteUser, creatUser} from '../controllers/userControllers.js'
+import { getAlluserCarg, getUser, updateUser, deleteUser, creatUser} from '../controllers/userControllers.js'
 import { getAllcargo, getCarg, creatCarg, deleteCarg, updCarg  } from '../controllers/valCargControllers.js'
 import { createSolicClient, deleteSolicClient, getAllsolicClient, getSolicClient, updateSolicClient } from '../controllers/solicClien.js'
 import { createProyect, deleteProyect, getAllProyect, getProyect, updateProyect } from '../controllers/proyectControllers.js'
 import { valUserini } from '../controllers/valUserini.js'
-import { closeUserSession, creatUserGoogle, ingreUserBase } from '../controllers/UserAction.js'
+import { closeUserSession, creatUserGoogle, ingreUserBase } from '../controllers/userAction.js'
 
 export const routerUser = express.Router()
 export const routerCarg = express.Router()
@@ -35,7 +35,7 @@ routerCarg.put('/:id', updCarg)
 routerCarg.delete('/:id', deleteCarg)
 
 //configuración de router de Usuario
-routerUser.get('/', getAlluser)
+routerUser.get('/', getAlluserCarg)
 routerUser.get('/:id', getUser)
 routerUser.post('/', creatUser)
 routerUser.delete('/:id', deleteUser)
@@ -43,7 +43,7 @@ routerUser.put('/:id', updateUser)
 
 //configuración de router usuario action
 routerUserAction.get('/longOut', closeUserSession)
-routerUserAction.get('/ingreUser', ingreUserBase)
+routerUserAction.get('/IngreUser', ingreUserBase)
 routerUserAction.post('/GoogleAuth', creatUserGoogle)
 
 //configuración de router para validaciones

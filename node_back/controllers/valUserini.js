@@ -1,21 +1,37 @@
 import valUserAuth from "../valAuthFirebase/AuthUse.js"
 
+const valUserAuthO = new valUserAuth()
 export const valUserini = async (req, res) => {
     try{
         let textSta
-        const valUserAuthO = new valUserAuth()
-        await valUserAuthO.valStatusUser()
+        await valUserAuthO.valUidUser()
         const result = valUserAuthO.getStatus()
-        console.log(result)
-        if(result == 'A'){
-            textSta = 'El usuario esta iniciado'
-        }else if(result == 'D'){
-            textSta = 'No esta ningun usuario iniciado'
+        const resultCargId = valUserAuthO.getCargoId()
+        const userId = valUserAuthO.getUserId()
+        switch (result) {
+            case 'A':
+                textSta = 'El usuario Administrador esta iniciado'
+                break;
+            case 'G':
+                textSta = 'El usuario Gerente esta iniciado'
+                break;
+            case 'E':
+                textSta = 'El usuario Empleado esta iniciado'
+                break;
+            case 'U':
+                textSta = 'El usuario Usuario esta iniciado'
+                break;
+            case 'D':
+                textSta = 'No esta ningun usuario iniciado'
+                break;
+            default:
+                break;
         }
-
         res.json({
             message: textSta,
-            statusUser: result
+            statusUser: result,
+            cargoId: resultCargId,
+            userId : userId
         })
     }catch(e){
         res.json({

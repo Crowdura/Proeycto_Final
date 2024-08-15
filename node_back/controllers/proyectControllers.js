@@ -1,13 +1,22 @@
 import { proyectModel } from "../model/proyectModel.js";
-import { doc, getDoc, getDocs, updateDoc, deleteDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, getDocs, updateDoc, deleteDoc, setDoc, query, where } from "firebase/firestore";
 
 export const getAllProyect = async ( req, res ) => {
     let proyects = []
+    const {key1, key2} = req.query
     try{
-        const proyectData = await getDocs(proyectModel)
-        proyectData.forEach( (data) => {
-            proyects.push({ ...data.data(), id:data.id })
-        })
+        if(key2 == "A"){
+            const proyectData = await getDocs(proyectModel)
+            proyectData.forEach( (data) => {
+                proyects.push({ ...data.data(), id:data.id })
+            })
+        }else{
+            const q = query(proyectModel, where("userAsing","==",key1))
+            const proyectData2 = await getDocs(q)
+            proyectData2 .forEach( (data) => {
+                proyects.push({ ...data.data(), id:data.id })
+            })
+        }
         res.json(proyects)
     }catch(e){
         res.json({
@@ -17,11 +26,11 @@ export const getAllProyect = async ( req, res ) => {
 }
 
 export const getProyect = async (req, res) => {
+    
     try{
-        let messg = ''
         const proyectRef = doc( proyectModel, req.params.id )
         const getProyect = await getDoc( proyectRef )
-        res.json(getProyect)
+        res.json(getProyect.data())
     }catch(e){
         res.json({
             message: e.message

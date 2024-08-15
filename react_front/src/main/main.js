@@ -1,12 +1,14 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
 import { BuiltButton } from "./builtButton.js";
+import { useNavigate } from "react-router-dom";
 
 const URI = 'http://localhost:8000/valUser';
 
 const Main = () => {
     const [valPrin, setVal] = useState('')
-    const [valBuilt, setValBuilt] = useState({})
+//    const [valIdCarg, setvalCarg] = useState('') 
+    const [valBuilt, setValBuilt] = useState('')
 
     const showNarMo = () => { 
         let menu = document.getElementById('mobile-menu');
@@ -19,8 +21,12 @@ const Main = () => {
     }
 
     const getValInicUser = async () => {
-        const request = await axios.get(URI)
-        setVal(request.data.statusUser)
+        try{
+            const request = await axios.get(URI)
+            setVal(request.data.statusUser)
+        }catch(e){
+            console.error(e)
+        }
     }
 
     const buitlMain = () => {
@@ -29,7 +35,7 @@ const Main = () => {
     }
     useEffect(() => {
         getValInicUser()
-    })
+    },[])
 
     useEffect(() => {
         buitlMain()

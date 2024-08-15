@@ -1,14 +1,45 @@
 import { UserModel } from "../model/userModel.js";
-import { doc, getDocs, deleteDoc, updateDoc, setDoc, getDoc, query, where} from "firebase/firestore";
+import { CargValMani } from "../model/valAutUser.js";
+import { doc, getDocs, deleteDoc, updateDoc, setDoc, getDoc, query, where, DocumentReference} from "firebase/firestore";
 import valUserAuth from "../valAuthFirebase/AuthUse.js";
 
-export const getAlluser = async (req, res) => {
+export const getAlluserCarg = async (req, res) => {
+    const {key1,Key2} = req.query
+    console.log(Key2)
+    try{
+        const cargValManis = []
+        const q = query(CargValMani, where("Cargo", "==", key1))
+        const users = await getDocs(q)
+        users.forEach((doc) => {
+            cargValManis.push({ ...doc.data(), id:doc.id })
+        })
+        console.log(cargValManis)
+        return getAlluser(res,Key2, cargValManis)
+    }catch(e){
+        console.error(e)
+    }
+} 
+
+export const getAlluser = async (res,key2,cargValManis) => {
     const docs = []
     try {
-        const users = await getDocs(UserModel)
-        users.forEach((doc) => {
-            docs.push({ ...doc.data(), id:doc.id })
-        })
+        const valExisM = key2 in cargValManis[0].valMani
+        if(valExisM){
+            const result = Object.entries(cargValManis[0].valMani).find(([key, value]) => key === key2);
+            
+            const q = query(UserModel, where("cargo", "==", result[1]))
+            const users = await getDocs(q)
+            users.forEach((doc) => {
+                docs.push({ ...doc.data(), id:doc.id })
+            })
+            console.log(docs)
+            console.log(cargValManis)
+        }else{
+            res.json({
+                message: "Este usuario no tiene el permiso nesesario"
+            })
+            return
+        }
         res.json(docs)
     } catch (error) {
         res.json({ message: error.message })
@@ -29,22 +60,28 @@ export const getUser = async (req, res) => {
 
 export const creatUser = async (req, res)=>{
     const authUse = new valUserAuth()
+ //   console.log("afuera try" + req.body)
+    const objprue = req.body
     try {
-        const refDoc = doc( UserModel )
-        const docdate = await getDoc(refDoc)
-        console.log('Entro error')
-        if (docdate.exists()) {
-            console.log('Entro error')
+        const resAuth = await authUse.creatWhitEmailPassWord(req.body.email, req.body.password)
+ //       console.log(authUse.type)
+ //       console.log(authUse.userId)
+        if(authUse.type !== 'E'){
+//            console.log('Entro')
+//            console.log(objprue)
+            objprue.refCuenta = authUse.userId
+ //           console.log('Entro 2')
+//            console.log(objprue)
+           // console.log(req.body)
+//           console.log(res)
+           // res.json({
+                
+            //}) 
+            return await setDoc(doc( UserModel ), objprue)
+        }else{
             res.json({
-                message: error.message
+                message: resAuth.Messg
             })
-        } else {
-            console.log('Entro en el de creación')
-            await setDoc( refDoc,  req.body)
-            await authUse.creatWhitEmailPassWord(req.body.email, req.body.password)
-            res.json({
-                message: "Se creo el registro "
-            })   
         }
     } catch (error) {
         res.json({
@@ -52,6 +89,7 @@ export const creatUser = async (req, res)=>{
         })
     }
 }
+
 
 export const updateUser = async (req, res)=>{
     try {
@@ -75,7 +113,7 @@ export const deleteUser = async (req, res) =>{
         if (docdata.exists()) {
             await deleteDoc(docRef)
             res.json({
-                message: 'Se elemino el usuario'
+                message: 'Se elimino el usuario'
             })
         } else {
             res.json({
