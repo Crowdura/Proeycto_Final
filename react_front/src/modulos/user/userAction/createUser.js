@@ -19,18 +19,22 @@ const CreacteUser = () => {
 
     const createUser = async (e) => {
         e.preventDefault()
-        console.log( Name + last_name )
-        await axios.post(URI, {
-            Name: Name,
-            lastName: last_name,
-            user: user,
-            email: email,
-            password: password,
-            tel: tel,
-            andress: andress,
-            cargo: '9Jj0x4BL0BkzYyQZLQS7'
-        })
-        navigate('/')
+        try{
+            console.log( Name + last_name )
+            await axios.post(URI, {
+                Name: Name,
+                lastName: last_name,
+                user: user,
+                email: email,
+                password: password,
+                tel: tel,
+                andress: andress,
+                cargo: '9Jj0x4BL0BkzYyQZLQS7'
+            })
+            navigate('/')
+        }catch(e){
+            console.error(e)
+        }
     }
     const creatUserGoogle = async (e) => {
         e.preventDefault()

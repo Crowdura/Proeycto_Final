@@ -19,5 +19,5 @@ app.use('/soliCliente', routerSolicClient)
 app.use('/valUser', routerVal)
 
 app.listen(PORT, () => {
-    console.log(`Server en escucha port ${ 8000 }`)
+    console.log(`Server en escucha port ${ PORT }`)
 })
