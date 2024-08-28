@@ -121,15 +121,20 @@ export const updateUser = async (req, res)=>{
 }
 
 export const deleteUser = async (req, res) =>{
+    const authUse = new valUserAuth()
     try {
         const docRef = doc( UserModel, req.params.id )
         console.log(docRef)
         const docdata = await getDoc( docRef )
         if (docdata.exists()) {
-            await deleteDoc(docRef)
-            res.json({
-                message: 'Se elimino el usuario'
+            await authUse.delectUser(docdata.data().refCuenta).then( async (res) => {
+                await deleteDoc(docRef).then((res) => {
+                    res.json({
+                        message: 'Se elimino el usuario'
+                    })
+                })
             })
+            
         } else {
             res.json({
                 message: 'El usuario no existe'

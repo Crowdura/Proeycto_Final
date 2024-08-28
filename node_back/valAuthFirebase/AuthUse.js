@@ -102,6 +102,14 @@ class valUserAuth {
         }
     }
     
+    async delectUser(uid){
+        try{
+            this.auth.delectUser(uid)
+        }catch(e){
+
+        }
+    }
+
     GoolgleAuth (auth) {
         this.auth = auth    
     }

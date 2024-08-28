@@ -1,16 +1,23 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Select from "react-tailwindcss-select"
 import axios from "axios";
 
 const URI = `${ process.env.REACT_APP_API_URL }/proyecto/`
+const URIS = `${ process.env.REACT_APP_API_URL }/usuarios/data/`
 
 const UpdateProyect = () => {
+
+    const defaultUser = {  value: 'h7DOMHftfVVlWzWY9gzv', label: `Federico Cuervo Duran` }
+
+
     const [nameProyect, setNameProyect] = useState('')
     const [descripProyect, setDesProyect] = useState('')
     const [statusProyect, setStatusProyect] = useState('')
-    const [userAsing, setUserAsing] = useState('')
+    const [userAsing, setUserAsing] = useState(defaultUser)
     const [fechaIni, setFechaIni] = useState('')
     const [fechaLast, setFechLast] = useState('')
+    const [userData, setDataUser] = useState([])
 
     const navigate = useNavigate()
 
@@ -41,13 +48,28 @@ const UpdateProyect = () => {
             setUserAsing(res.data.userAsing)
             setFechaIni(res.data.FechaIni)
             setFechLast(res.data.FechaLast)
-
         }catch(e){
             console.error(e)
         }
     }
     
+    const getUsers = async () => {
+        try{
+            const res = await axios.get(URIS)
+            if(res.status == 200){
+                console.log(res.data)
+                const options2 = res.data.map((user) => {
+                    return { value: user.id, label: `${user.Name} ${user.lastName}` }
+                })
+                setDataUser(options2)
+            }
+        }catch(e){
+            console.error(e)
+        }
+    }
+
     useEffect(() =>{
+        getUsers()
         getProyect()
     },[])
     return(<>
@@ -74,7 +96,19 @@ const UpdateProyect = () => {
                                 </div>
                                 <div>
                                     <label className="text-gray-700 dark:text-gray-200" htmlFor="userAsing">Usuarios asignados</label>
-                                    <input onChange={(e) => {setUserAsing(e.target.value)}} id="userAsing" type="text" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" value={userAsing} required/>
+                                    <Select
+                                        id="userAsing"
+                                        value={userAsing}
+                                        onChange={(e) => {setUserAsing(e)}}
+                                        options={userData}
+                                        classNames={{
+                                            container: 'w-full z-10',
+                                            control: 'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            menu:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            option:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring',
+                                            singleValue:'text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring'
+                                        }}
+                                    />
                                 </div>
                                 <div>
                                     <label className="text-gray-700 dark:text-gray-200" htmlFor="fechaIni">Fecha de creación</label>
@@ -86,7 +120,7 @@ const UpdateProyect = () => {
                                 </div>
                             </div>
                             <div className="flex justify-end mt-6">
-                                <button onClick={(e) => { updateProyect(e) }} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Actualizar</button>
+                                <button id="buttonUpdate" onClick={(e) => { updateProyect(e) }} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Actualizar</button>
                             </div>
                         </form>
                     </section>  

@@ -7,10 +7,13 @@ const URI = `${ process.env.REACT_APP_API_URL }/proyecto/`
 const URIS = `${ process.env.REACT_APP_API_URL }/usuarios/data/`
 
 const CreateProyect = () => {
+
+    const defaultUser = {  value: 'h7DOMHftfVVlWzWY9gzv', label: `Federico Cuervo Duran` }
+
     const [nameProyect, setNameProyect] = useState('')
     const [descripProyect, setDesProyect] = useState('')
     const [statusProyect, setStatusProyect] = useState('')
-    const [userAsing, setUserAsing] = useState('')
+    const [userAsing, setUserAsing] = useState(defaultUser)
     const [fechaIni, setFechaIni] = useState('')
     const [fechaLast, setFechLast] = useState('')
     const [userData, setDataUser] = useState([])
@@ -89,6 +92,7 @@ const CreateProyect = () => {
                                 <div>
                                     <label className="text-gray-700 dark:text-gray-200" htmlFor="userAsing">Usuarios asignados</label>
                                     <Select
+                                        id="userAsing"
                                         value={userAsing}
                                         onChange={(e) => {setUserAsing(e)}}
                                         options={userData}
@@ -103,7 +107,7 @@ const CreateProyect = () => {
                                 </div>
                             </div>
                             <div className="flex justify-end mt-6">
-                                <button onClick={(e) => { CreateProyec(e) }} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Crear</button>
+                                <button id="proyectButtonF" onClick={(e) => { CreateProyec(e) }} className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Crear</button>
                             </div>
                         </form>
                     </section>  

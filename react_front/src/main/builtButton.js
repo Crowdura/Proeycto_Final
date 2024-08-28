@@ -25,78 +25,78 @@ export const BuiltButton = (ValUser, ValUserCarg) => {
     switch (ValUser) {
         case 'A':
             valBuiltMain  = <>
-                                <ButtonMainP href="/">Catalogo de proyectos</ButtonMainP>
-                                <ButtonMain href="/admin/A">Lista de administradores</ButtonMain>
-                                <ButtonMain href="/Gerentes/G">Lista de gerentes</ButtonMain>
-                                <ButtonMain href="/employ/E">Lista de empleados</ButtonMain>
-                                <ButtonMain href="/user/U">Lista de usuarios</ButtonMain>
+                                <ButtonMainP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainP>
+                                <ButtonMain id="navAdmin" href="/admin/A">Lista de administradores</ButtonMain>
+                                <ButtonMain id="navGeren" href="/Gerentes/G">Lista de gerentes</ButtonMain>
+                                <ButtonMain id="navEmplo" href="/employ/E">Lista de empleados</ButtonMain>
+                                <ButtonMain id="navUser" href="/user/U">Lista de usuarios</ButtonMain>
                             </>
             
             valBuiltMainL = <>
-                                <ButtonMainUserOuput onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
+                                <ButtonMainUserOuput id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
                             </> 
 
             valBuiltMainM = <>
-                                <ButtonMainMovilP href="/">Catalogo de proyectos</ButtonMainMovilP>
-                                <ButtonMainMovil href="/admin/A">Lista de administradores</ButtonMainMovil>
-                                <ButtonMainMovil href="/Gerentes/G">Lista de gerentes</ButtonMainMovil>
-                                <ButtonMainMovil href="/employ/E">lista de empleados</ButtonMainMovil>
-                                <ButtonMainMovil href="/user/U">Lista de usuarios</ButtonMainMovil>
-                                <ButtonMainMovUserO onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
+                                <ButtonMainMovilP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainMovilP>
+                                <ButtonMainMovil id="navAdmin" href="/admin/A">Lista de administradores</ButtonMainMovil>
+                                <ButtonMainMovil id="navGeren" href="/Gerentes/G">Lista de gerentes</ButtonMainMovil>
+                                <ButtonMainMovil id="navEmplo" href="/employ/E">lista de empleados</ButtonMainMovil>
+                                <ButtonMainMovil id="navUser" href="/user/U">Lista de usuarios</ButtonMainMovil>
+                                <ButtonMainMovUserO id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
                             </>
             break;
         case 'G':
             valBuiltMain  = <>
-                                <ButtonMainP href="/">Catalogo de proyectos</ButtonMainP>
-                                <ButtonMain href="/employ/E">lista de empleados</ButtonMain>
-                                <ButtonMain href="/user/U">Lista de usuarios</ButtonMain>
+                                <ButtonMainP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainP>
+                                <ButtonMain id="navEmplo" href="/employ/E">lista de empleados</ButtonMain>
+                                <ButtonMain id="navUser" href="/user/U">Lista de usuarios</ButtonMain>
                             </>
             valBuiltMainL = <>
-                                <ButtonMainUserOuput onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
+                                <ButtonMainUserOuput id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
                             </> 
             valBuiltMainM = <>
-                                <ButtonMainMovilP href="/">Catalogo de proyectos</ButtonMainMovilP>
-                                <ButtonMainMovil href="/employ/E">lista de empleados</ButtonMainMovil>
-                                <ButtonMainMovil href="/user/U">Lista de usuarios</ButtonMainMovil>
-                                <ButtonMainMovUserO onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
+                                <ButtonMainMovilP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainMovilP>
+                                <ButtonMainMovil id="navEmplo" href="/employ/E">lista de empleados</ButtonMainMovil>
+                                <ButtonMainMovil id="navUser" href="/user/U">Lista de usuarios</ButtonMainMovil>
+                                <ButtonMainMovUserO id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
                             </>
             break;
         case 'E':
             valBuiltMain  = <>
-                                <ButtonMainP href="/">Catalogo de proyectos</ButtonMainP>
-                                <ButtonMain href="/user/U">Lista de usuarios</ButtonMain>
+                                <ButtonMainP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainP>
+                                <ButtonMain id="navUser" href="/user/U">Lista de usuarios</ButtonMain>
                             </>
             valBuiltMainL = <>
-                                <ButtonMainUserOuput onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
+                                <ButtonMainUserOuput id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
                             </> 
             valBuiltMainM = <>
-                                <ButtonMainMovilP href="/">Catalogo de proyectos</ButtonMainMovilP>
+                                <ButtonMainMovilP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainMovilP>
                                 <ButtonMainMovil href="/user">Lista de usuarios</ButtonMainMovil>
-                                <ButtonMainMovUserO onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
+                                <ButtonMainMovUserO id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
                             </>
             break;
         case 'U':
             valBuiltMain  = <>
-                                <ButtonMainP href="/">Catalogo de proyectos</ButtonMainP>
-                                <ButtonMain href="/CatalogoProy/create">Crear Proyecto</ButtonMain>
+                                <ButtonMainP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainP>
+                                <ButtonMain id="navCatalogCreat" href="/CatalogoProy/create">Crear Proyecto</ButtonMain>
                             </>
             valBuiltMainL = <>
-                                <ButtonMainUserOuput onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
+                                <ButtonMainUserOuput id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainUserOuput>
                             </> 
             valBuiltMainM = <>
-                                <ButtonMainMovilP href="/">Catalogo de proyectos</ButtonMainMovilP>
-                                <ButtonMainMovil href="/CatalogoProy/create">Crear Proyecto</ButtonMainMovil>
-                                <ButtonMainMovUserO onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
+                                <ButtonMainMovilP id="navCatalog" href="/">Catalogo de proyectos</ButtonMainMovilP>
+                                <ButtonMainMovil id="navCatalogCreat" href="/CatalogoProy/create">Crear Proyecto</ButtonMainMovil>
+                                <ButtonMainMovUserO id="sesiOuput" onClick={ () => userOutput() }>Salir</ButtonMainMovUserO>
                             </>
             break;
         case 'D':
 
             valBuiltMainL = <>
-                                <ButtonMainUserI href="/">Ingreso</ButtonMainUserI>
+                                <ButtonMainUserI id="navCatalog" href="/">Ingreso</ButtonMainUserI>
                                 <ButtonMainUserO href="/user/create">Registro</ButtonMainUserO>
                             </>
             valBuiltMainM = <>
-                                <ButtonMainMovUserI href="/">Ingreso</ButtonMainMovUserI>
+                                <ButtonMainMovUserI id="navCatalog" href="/">Ingreso</ButtonMainMovUserI>
                                 <ButtonMainMovUserI href="/user/create">Registro</ButtonMainMovUserI>
                             </>
             break;

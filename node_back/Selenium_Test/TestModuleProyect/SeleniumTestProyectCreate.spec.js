@@ -8,30 +8,27 @@ import { Driver } from 'selenium-webdriver/chrome.js'
         let driver;
 
         driver = await new Builder().forBrowser('chrome').build()
-        await driver.get('http://localhost:3000/create')
+        await driver.get('http://localhost:3000/CatalogoProy/create')
 
         await driver.manage().setTimeouts({ implicit: 500})
         await driver.manage().window().maximize();
 
-        const inputName = await driver.findElement(By.id('nameP'))
-        await inputName.sendKeys('Federico')
+        const inputNameProyect = await driver.findElement(By.id('nameProyect'))
+        await inputNameProyect.sendKeys('Proyecto de prueba')
 
-        let inputNameL = await driver.findElement(By.id('nameL'))
-        await inputNameL.sendKeys('Cuervo')
+        let inputDescripProyect = await driver.findElement(By.id('descripProyect'))
+        await inputDescripProyect.sendKeys('Descripción de prueba')
 
-        let inputUser = await driver.findElement(By.id('User'))
-        await inputUser.sendKeys('Crow')
+        let inputFechIni = await driver.findElement(By.id('fechaIni'))
+        await inputFechIni.sendKeys('27082024')
 
-        let inputEmail = await driver.findElement(By.id('email'))
-        await inputEmail.sendKeys('fedecuervo44@hotmail.com')
+        let inputFechLast = await driver.findElement(By.id('fechaLast'))
+        await inputFechLast.sendKeys('29082024')
     
-        let inputTel = await driver.findElement(By.id('tel'))
-        await inputTel.sendKeys('3204620908')
+        let inputStatusProyect = await driver.findElement(By.id('statusProyect'))
+        await inputStatusProyect.sendKeys('Prueba')
     
-        let inputAndress = await driver.findElement(By.id('andress'))
-        await inputAndress.sendKeys('cra 28')
-
-        let createButton = driver.findElement(By.className('ButtonB'))
+        let createButton = driver.findElement(By.id('proyectButtonF'))
         await createButton.click()
     }catch (e){
         console.log(e)
