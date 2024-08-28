@@ -3,8 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from "axios";
 import { TableB, TbodyB, Tdb, ThB, TheadB, TrbB, TrhB } from "../../../component/ui/table.js";
 
-const URI = `${ process.env.REACT_APP_API_URL }/usuarios/`
-const URIS = `${ process.env.REACT_APP_API_URL }/valUser`
+const urlApi = process.env.API_NODE || "http://localhost:8000"
+
+const URI = `${ urlApi }/usuarios/`
+const URIS = `${ urlApi }/valUser`
 
 const ShowListUser = () => {
     const[ dataD, setData ] = useState([])

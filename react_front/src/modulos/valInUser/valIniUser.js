@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
 
-const URI = `${ process.env.REACT_APP_API_URL }/valUser`;
+const urlApi = process.env.API_NODE || "http://localhost:8000"
+
+const URI = `${ urlApi }/valUser`;
 
 const getValInicUser = async () => {     
     try{

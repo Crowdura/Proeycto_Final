@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const URI = `${ process.env.REACT_APP_API_URL }/usuarios/`
+const urlApi = process.env.API_NODE || "http://localhost:8000"
+
+const URI = `${ urlApi }/usuarios/`
 
 const ShowUser = () =>{
     const [Name, setName] = useState('')

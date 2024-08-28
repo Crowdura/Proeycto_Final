@@ -5,7 +5,9 @@ import { ButtonMainMovilP, ButtonMainMovil } from "../component/ui/Main/buttonMa
 import axios from "axios"
 import { ButtonMainMovUserI, ButtonMainMovUserO, ButtonMainUserI, ButtonMainUserO } from "../component/ui/Main/buttonMainUserI"
 
-const URI = `${ process.env.REACT_APP_API_URL }/userAction/longOut`;
+const urlApi = process.env.API_NODE || "http://localhost:8000"
+
+const URI = `${ urlApi }/userAction/longOut`;
 
 export const BuiltButton = (ValUser, ValUserCarg) => {
     let valBuiltMain

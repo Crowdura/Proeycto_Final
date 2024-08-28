@@ -1,7 +1,9 @@
 import axios from "axios"
 import { useState, useEffect} from "react"
 import { BuiltButton } from "./builtButton.js";
-const URI = `${ process.env.REACT_APP_API_URL }/valUser`;
+
+const urlApi = process.env.API_NODE || "http://localhost:8000"
+const URI = `${ urlApi }/valUser`;
 
 const Main = () => {
     const [valPrin, setVal] = useState('')
