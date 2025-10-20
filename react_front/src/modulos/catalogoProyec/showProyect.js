@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const urlApi = process.env.API_NODE || "http://localhost:8000"
+const urlApi = process.env.REACT_APP_API_NODE || "http://localhost:8000"
 
 
 const URI = `${ urlApi }/proyecto/`
