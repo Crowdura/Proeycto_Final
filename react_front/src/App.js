@@ -24,7 +24,7 @@ function App() {
       headers:{
       }
     });
-    console.log(res.json())
+    console.log(res)
     }catch(e){
       console.error('Error', e)
     }
