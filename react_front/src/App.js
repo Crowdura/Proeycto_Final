@@ -28,8 +28,6 @@ function App() {
     }catch(e){
       console.error('Error', e)
     }
-    console.log(data)
-    return data.ip;
   }
 
   const getValInicUser = async () => {     
