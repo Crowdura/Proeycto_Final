@@ -18,6 +18,20 @@ function App() {
     setVistPag(bultPag)
   }
 
+  const getIpVal = async () => {
+    try{
+    const res = await axios.get("https://api.ipify.org?format=json",{
+      headers:{
+      }
+    });
+    console.log(res.json())
+    }catch(e){
+      console.error('Error', e)
+    }
+    console.log(data)
+    return data.ip;
+  }
+
   const getValInicUser = async () => {     
     try{
       const request = await axios.get(URI,{
@@ -32,6 +46,7 @@ function App() {
     }
   }
   useInsertionEffect(() => {
+    getIpVal()
     getValInicUser()
   },[])
 
