@@ -22,7 +22,7 @@ const IngreUser = () => {
                     'Authorization' : authHeader,
                 }
             })
-            print(reques)
+            console.log(reques)
             getValInicUser()
         }catch(e){
             console.error('Error fetching data:', e);
