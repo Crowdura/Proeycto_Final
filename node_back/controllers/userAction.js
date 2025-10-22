@@ -1,8 +1,7 @@
-import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
+import { getIdToken, signInWithEmailAndPassword} from "firebase/auth";
 import valUserAuth from "../valAuthFirebase/AuthUse.js";
 import { auth } from "../database/db.js";
 import Cookies from "universal-cookie";
-import { use } from "react";
 
 export const ingreUserBase = async (req, res) => {
     const cookie = new Cookies()
