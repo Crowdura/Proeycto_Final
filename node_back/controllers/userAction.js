@@ -2,6 +2,7 @@ import { getIdToken, signInWithEmailAndPassword } from "firebase/auth";
 import valUserAuth from "../valAuthFirebase/AuthUse.js";
 import { auth } from "../database/db.js";
 import Cookies from "universal-cookie";
+import { use } from "react";
 
 export const ingreUserBase = async (req, res) => {
     const cookie = new Cookies()
@@ -16,6 +17,7 @@ export const ingreUserBase = async (req, res) => {
         .then((userCredential) => {
             const user = userCredential.user
             res.json({
+                User: getIdToken(user),
                 message: 'Se inicio sesión'
             })
         })
