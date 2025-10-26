@@ -16,7 +16,7 @@ export const ingreUserBase = async (req, res) => {
         .then((userCredential) => {
             const user = userCredential.user
             res.json({
-                User: getIdToken(user),
+                User:  getIdToken(user),
                 message: 'Se inicio sesión'
             })
         })
